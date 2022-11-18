@@ -2,10 +2,6 @@ import styled, { css } from "styled-components";
 import { Container } from "./global";
 
 export const HomeContainer = styled(Container)`
-    ${({ theme }) => css`
-        background-color:${theme.color} ;
-    `}
-    
     width:100%;
     margin-top: 60px;
 `;

@@ -1,44 +1,61 @@
 import React from "react";
+import api from "../../services/api";
+import { Pokemon, PokemonType } from "../../components/Card";
 import Card from "../../components/Card";
-import { useState, useEffect } from "react";
+import { CardList, PokedexContainer } from "./index.styles";
+import SearchBar from "../../components/SearchBar";
+type Request = {
+    id: number,
+    types: PokemonType
+}
 
 export async function getStaticProps() {
-    type PokemonResponse = {
-        id: number;
-        name: string;
-        url: string;
-    }
-    const maxPokemons = 905;
-    const api = "https://pokeapi.co/api/v2/pokemon/";
 
-    const res = await fetch(`${api}/?limit=${maxPokemons}`);
-    const data = await res.json();
-    data.results.map((item, index) => {
-        item.id = index + 1;
-    });
+    const response = await api.get("/pokemon?limit=905");
+    const { results } = response.data;              //Estou destruturando o result da response.data.results
+
+    const payLoadPokemons = await Promise.all(      //Promise.all espera toda listagem ser completa
+        results.map(async (pokemon: Pokemon) => {
+            const { id, types } = await getMoreInfo(pokemon.url);
+
+            return {
+                name: pokemon.name,
+                id,
+                types
+            };
+        })
+
+    );
+
+    async function getMoreInfo(url: string): Promise<Request> {
+        const response = await api.get(url);
+        const { id, types } = response.data;
+
+        return {
+            id, types
+        };
+    }
 
     return {
         props: {
-            pokemons: data.results,
+            pokemons: payLoadPokemons,
         }
     };
 }
 
 
 
-const index = ({ pokemons }) => {
-
-
-
-
-
+const index = ({ pokemons }: Pokemon) => {
 
     return (
-        <ul>
-            {pokemons.map((pokemon) => (
-                <Card key={pokemon.id} pokemon={pokemon} types={pokemon.type} />
-            ))}
-        </ul>
+        <PokedexContainer>
+            <SearchBar />
+            <CardList>
+                {pokemons.map((pokemon: typeof pokemons) => (
+                    <li key={pokemon.id}><Card key={pokemon.id.toString()} pokemon={pokemon} /></li>
+                ))}
+            </CardList>
+        </PokedexContainer>
     );
 };
 
