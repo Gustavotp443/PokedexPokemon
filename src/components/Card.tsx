@@ -23,9 +23,9 @@ type data = {
 }
 
 
-const Card = ({ pokemon }: Props) => {
+const Card = ({ pokemon }: any) => {
     return (
-        <PokemonCard type={pokemon.types[0].type.name}>
+        <PokemonCard href={`/pokedex/${pokemon.id}`} type={pokemon.types[0].type.name}>
             <LeftSide>
                 <PokemonId>#{pokemon.id}</PokemonId>
                 <PokemonName>{pokemon.name}</PokemonName>

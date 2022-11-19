@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import api from "../../services/api";
 import { Pokemon, PokemonType } from "../../components/Card";
 import Card from "../../components/Card";
@@ -9,8 +9,8 @@ type Request = {
     types: PokemonType
 }
 
-export async function getStaticProps() {
 
+export async function getStaticProps() {
     const response = await api.get("/pokemon?limit=905");
     const { results } = response.data;              //Estou destruturando o result da response.data.results
 
@@ -36,6 +36,8 @@ export async function getStaticProps() {
         };
     }
 
+
+
     return {
         props: {
             pokemons: payLoadPokemons,
@@ -44,19 +46,28 @@ export async function getStaticProps() {
 }
 
 
-
-const index = ({ pokemons }: Pokemon) => {
-
+const index = ({ pokemons }) => {
+    const [searchTerm, setSearchTerm] = useState("");
     return (
         <PokedexContainer>
-            <SearchBar />
+            <SearchBar onChange={setSearchTerm} />
             <CardList>
-                {pokemons.map((pokemon: typeof pokemons) => (
-                    <li key={pokemon.id}><Card key={pokemon.id.toString()} pokemon={pokemon} /></li>
-                ))}
+                {pokemons.length > 0 &&
+                    pokemons.filter((val: Pokemon) => {
+                        if (searchTerm == "") {
+                            return val;
+                        } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                            return val;
+                        }
+                    }).map((pokemon: typeof pokemons) => (
+                        <li key={pokemon.id}><Card key={pokemon.id.toString()} pokemon={pokemon} /></li>
+                    ))}
             </CardList>
         </PokedexContainer>
     );
 };
 
 export default index;
+
+
+

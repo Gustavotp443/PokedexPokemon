@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const SearchContainer = styled.div`
-o
     margin: 0 4%;
     padding-bottom: 20px;
     svg{
