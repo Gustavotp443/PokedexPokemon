@@ -12,6 +12,8 @@ export const Header = styled.div`
     align-items: center;
     margin-top: 50px;
     font-size: 1.8em;
+    text-align: center;
+    
 `;
 
 export const Main = styled.div`

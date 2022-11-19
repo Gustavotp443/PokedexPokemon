@@ -23,7 +23,7 @@ export const CardList = styled.ul`
         @media screen and (max-width: 1009px){
             width: 50%;
         }
-        @media screen and (max-width: 667px){
+        @media screen and (max-width: 680px){
             width: 100%;
             
         }

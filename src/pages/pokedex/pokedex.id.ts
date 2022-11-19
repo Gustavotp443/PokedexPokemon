@@ -186,7 +186,7 @@ export const Attributes = styled.p`
     width: 100px;
     text-align: justify;
     @media screen and (max-width:580px){
-        width: 20%;
+        width: auto;
     }
 `;
 
@@ -194,7 +194,7 @@ export const AttributesValue = styled.p`
 color: black;
 width: 10px;
 @media screen and (max-width:580px){
-        width: 10%;
+        width: auto;
 
     }
 `;

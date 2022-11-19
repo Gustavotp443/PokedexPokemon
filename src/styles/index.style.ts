@@ -12,12 +12,19 @@ export const Header = styled.div`
     justify-content: center;
     a{
     text-decoration: none;
-}
+    }
 
     >svg{
         font-size: 30em;
         margin-top: -50px;
+        @media screen and (max-width:300px){
+    transform: scale(85%);
+}
     }
+
+@media screen and (max-width:430px){
+    transform: scale(70%);
+}
 `;
 
 export const Welcome = styled.div`

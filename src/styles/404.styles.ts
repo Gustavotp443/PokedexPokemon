@@ -11,11 +11,19 @@ export const Container404 = styled(Container)`
 
     h2{
         font-size: 2.3em;
+        text-align: center;
     }
     img{
         margin-top: 80px;
         width: 480px;
         height: 320px;
+        @media screen and (max-width:500px){
+            transform:scale(75%)            
+        }
+
+        @media screen and (max-width:360px){
+            transform:scale(50%)            
+        }
     }
     >a{
         text-decoration: none;     
