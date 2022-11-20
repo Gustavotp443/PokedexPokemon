@@ -12,7 +12,7 @@ type Request = {
 
 export async function getServerSideProps() {
     const offset = 0;
-    const limit = 40;
+    const limit = 905;
     const response = await api.get(`/pokemon?offset=${offset}&limit=${limit}`);
     const { results } = response.data;              //Estou destruturando o result da response.data.results
 
@@ -56,10 +56,6 @@ const index = ({ pokemons }) => {
     return (
         <PokedexContainer>
             <ButtonToTop />
-            <div>
-                <button >Prev</button>
-                <button >Next</button>
-            </div>
             <SearchBar onChange={setSearchTerm} />
             <CardList>
                 {pokemons.length > 0 &&
@@ -78,6 +74,3 @@ const index = ({ pokemons }) => {
 };
 
 export default index;
-
-
-
