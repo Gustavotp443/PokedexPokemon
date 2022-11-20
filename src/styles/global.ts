@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle, css } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 
 
@@ -13,9 +13,7 @@ export default createGlobalStyle`
     }
     html,body{height:100%; }
     body{
-        ${({ theme }) => css`
-        background-color:${theme.colors.darkTheme} ;
-    `}
+        background-color:#121214;
         font-size: 14px;
         color: #fafafa;
         font-family: 'Roboto', sans-serif;

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Image from "next/image";
-import Link from "next/link";
+
+type CLick = {
+    click: boolean;
+}
 
 export const Nav = styled.nav`
 display: flex;
@@ -28,7 +31,7 @@ cursor: pointer;
 padding: 0 2%;
 `;
 
-export const NavLinks = styled.div`
+export const NavLinks = styled.div<CLick>`
 display: flex;
 justify-content: center;
 align-items: center;
@@ -82,7 +85,7 @@ export const MobileIcon = styled.div`
     }
 `;
 
-export const PokedexLink = styled.div`
+export const PokedexLink = styled.div<CLick>`
     @media screen and (max-width:768px){
         transition: all 1s;
         position: absolute;

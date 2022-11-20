@@ -1,26 +1,7 @@
 
 import React from "react";
-import Link from "next/link";
 import { PokemonDetail, PokemonImage, RightSide, PokemonCard, LeftSide, PokemonId, PokemonName, PokemonContentType, PokemonType, PokemonTypeText } from "./Card.styles";
 
-export type PokemonType = {
-    type: {
-        name: string;
-    }
-
-}
-
-export type Pokemon = {
-    name: string,
-    url: string,
-    id: number,
-    types: PokemonType[]
-}
-type data = {
-    name: string;
-    url: string;
-    types: PokemonType[];
-}
 
 
 const Card = ({ pokemon }: any) => {
@@ -30,7 +11,7 @@ const Card = ({ pokemon }: any) => {
                 <PokemonId>#{pokemon.id}</PokemonId>
                 <PokemonName>{pokemon.name}</PokemonName>
                 <PokemonContentType>
-                    {pokemon.types.map(pokemonType => (
+                    {pokemon.types.map((pokemonType: any) => (
                         <PokemonType key={pokemonType.type.name} type={pokemonType.type.name}>
                             <PokemonTypeText>
                                 {pokemonType.type.name}
@@ -44,6 +25,7 @@ const Card = ({ pokemon }: any) => {
                     src={"/images/Pokeball.png"}
                     width="130"
                     height="130"
+                    alt="pokeball"
                 />
                 <PokemonImage src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
                     width="130"
@@ -51,7 +33,6 @@ const Card = ({ pokemon }: any) => {
                     alt={pokemon.name}
                 />
             </RightSide>
-            {/* <Link href={`/pokedex/${pokemon.id}`}>Detalhes</Link> */}
         </PokemonCard>
     );
 };

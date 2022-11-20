@@ -1,15 +1,16 @@
 import React from "react";
-import Image from "next/image";
 import api from "../../services/api";
-import { BotWrapper, Attributes, PokemonId, PokemonTypeText, PokemonType, PokemonContentType, PokemonContent, PokemonTop, PokemonName, LeftSide, RightSide, PokemonBot, SidesContainer, CircleImage, BaseStatus, BaseStatusText, AttributesValue, AttributesWrapper, ProgressBar, PokemonImage, AbilitiesList, AbilitiesText, AbilitiesWraper, PokemonNameId, ArrowToComeback } from "./pokedex.id";
+import { BotWrapper, Attributes, PokemonId, PokemonTypeText, PokemonTypes, PokemonContentType, PokemonContent, PokemonTop, PokemonName, LeftSide, RightSide, PokemonBot, SidesContainer, CircleImage, BaseStatus, BaseStatusText, AttributesValue, AttributesWrapper, ProgressBar, PokemonImage, AbilitiesList, AbilitiesText, AbilitiesWraper, PokemonNameId, ArrowToComeback } from "./pokedex.id";
 import { AiOutlineLeft } from "react-icons/ai";
 import Link from "next/link";
 export const getStaticPaths = async () => {
     const response = await api.get("/pokemon?limit=905");
     const data = await response.data;
-
     //params
-    const paths = data.results.map((pokemon: any, index: number) => {
+
+
+
+    const paths = data.results.map((pokemon, index: number) => {
         return {
             params: { pokemonId: (index + 1).toString() }, //necessário que o id esteja como texto
         };
@@ -21,7 +22,7 @@ export const getStaticPaths = async () => {
     };
 };
 
-export const getStaticProps = async (context) => {   //context extrai id e carrega dado individual
+export const getStaticProps = async (context: any) => {   //context extrai id e carrega dado individual
 
     const id = context.params.pokemonId;
 
@@ -35,8 +36,10 @@ export const getStaticProps = async (context) => {   //context extrai id e carre
 
 };
 
-const Pokemon = ({ pokemon }) => {
-    console.log(pokemon);
+const Pokemon = ({ pokemon }: any) => {
+
+
+
     return (
         <PokemonContent>
             <Link href="/pokedex">
@@ -67,11 +70,11 @@ const Pokemon = ({ pokemon }) => {
                         </PokemonNameId>
                         <PokemonContentType>
                             {pokemon.types.map(pokemonType => (
-                                <PokemonType key={pokemonType.type.name} type={pokemonType.type.name}>
+                                <PokemonTypes key={pokemonType.type.name} type={pokemonType.type.name}>
                                     <PokemonTypeText>
                                         {pokemonType.type.name}
                                     </PokemonTypeText>
-                                </PokemonType>
+                                </PokemonTypes>
                             ))}
                         </PokemonContentType>
                     </RightSide>

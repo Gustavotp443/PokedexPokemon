@@ -2,13 +2,17 @@ import styled, { css } from "styled-components";
 import { Container } from "../../styles/global";
 import Image from "next/image";
 import { Line } from "rc-progress";
+import { PokemonType } from "../../components/Card.styles";
+
+
+
 export const PokemonContent = styled(Container)`
 
 
 `;
-export const ArrowToComeback = styled.div`
+export const ArrowToComeback = styled.div<PokemonType>`
      ${({ theme, type }) => css`
-        background: ${theme.colors.boxType[type]};
+     background: ${theme.colors.boxType[type]};
         width: 30px;
         height: 30px;
         display:flex;
@@ -26,7 +30,7 @@ export const ArrowToComeback = styled.div`
     `}
 `;
 
-export const PokemonTop = styled.div`
+export const PokemonTop = styled.div<PokemonType>`
     ${({ theme, type }) => css`
         background: ${theme.colors.backgroundCard[type]};
         display: flex;
@@ -116,7 +120,7 @@ export const PokemonContentType = styled.div`
     flex-direction: row;
 `;
 
-export const PokemonType = styled.div`
+export const PokemonTypes = styled.div<PokemonType>`
     ${({ theme, type }) => css`
         display: flex;
         padding: 5px;
@@ -133,13 +137,11 @@ export const PokemonType = styled.div`
 
 
 export const PokemonTypeText = styled.p`
-    ${({ theme }) => css`
         font-weight: 500;
         font-size: 1em;
         line-height: 14px;
         color: white;
         text-transform: capitalize;
-    `}
 `;
 
 export const PokemonBot = styled.div`
@@ -164,9 +166,9 @@ width: 80%;
 }
 `;
 
-export const BaseStatusText = styled.h1`
+export const BaseStatusText = styled.h1<PokemonType>`
 ${({ theme, type }) => css`
-    color: ${theme.colors.boxType[type]};
+color: ${theme.colors.backgroundCard[type]};
 `}
 `;
 export const AttributesWrapper = styled.div`
@@ -222,9 +224,9 @@ export const AbilitiesList = styled.ul`
     line-height: 30px;
 `;
 
-export const AbilitiesText = styled.h1`
+export const AbilitiesText = styled.h1<PokemonType>`
     ${({ theme, type }) => css`
-    color:${theme.colors.backgroundCard[type]}
+    color: ${theme.colors.backgroundCard[type]};
     `}
 `;
 
