@@ -3,27 +3,25 @@ import api from "../../services/api";
 import { BotWrapper, Attributes, PokemonId, PokemonTypeText, PokemonTypes, PokemonContentType, PokemonContent, PokemonTop, PokemonName, LeftSide, RightSide, PokemonBot, SidesContainer, CircleImage, BaseStatus, BaseStatusText, AttributesValue, AttributesWrapper, ProgressBar, PokemonImage, AbilitiesList, AbilitiesText, AbilitiesWraper, PokemonNameId, ArrowToComeback } from "../../styles/pokedex.id";
 import { AiOutlineLeft } from "react-icons/ai";
 import Link from "next/link";
+import { Abilities, Attribute, Monster, Pokemon, PokemonType } from "../../interfaces/PokemonDefinition";
 
 export const getStaticPaths = async () => {
-    const response = await api.get("/pokemon?limit=905");
+    const response = await api.get("/pokemon");
     const data = await response.data;
     //params
 
 
 
-    const paths = data.results.map((pokemon, index: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const paths = data.results.map((_: string, index: number) => {
         return {
             params: { pokemonId: (index + 1).toString() }, //necessário que o id esteja como texto
         };
     });
 
-    return {
-        paths,
-        fallback: false,
-    };
 };
 
-export const getStaticProps = async (context: any) => {   //context extrai id e carrega dado individual
+export const getStaticProps = async (context: { params: { pokemonId: string; }; }) => {   //context extrai id e carrega dado individual
 
     const id = context.params.pokemonId;
 
@@ -37,7 +35,7 @@ export const getStaticProps = async (context: any) => {   //context extrai id e 
 
 };
 
-const Pokemon = ({ pokemon }: any) => {
+const Pokemon = ({ pokemon }: Monster) => {
 
 
 
@@ -70,7 +68,7 @@ const Pokemon = ({ pokemon }: any) => {
                             <PokemonName>{`${pokemon.name}`}</PokemonName>
                         </PokemonNameId>
                         <PokemonContentType>
-                            {pokemon.types.map(pokemonType => (
+                            {pokemon.types.map((pokemonType: PokemonType) => (
                                 <PokemonTypes key={pokemonType.type.name} type={pokemonType.type.name}>
                                     <PokemonTypeText>
                                         {pokemonType.type.name}
@@ -86,7 +84,7 @@ const Pokemon = ({ pokemon }: any) => {
                     <BaseStatus>
                         <BaseStatusText type={pokemon.types[0].type.name}>Base Status</BaseStatusText>
                         {
-                            pokemon.stats.map(attribute => (
+                            pokemon.stats.map((attribute: Attribute) => (
                                 <AttributesWrapper key={attribute.stat.name}>
                                     <Attributes>{attribute.stat.name}</Attributes>
                                     <AttributesValue>{attribute.base_stat}</AttributesValue>
@@ -106,7 +104,7 @@ const Pokemon = ({ pokemon }: any) => {
                     <AbilitiesWraper>
                         <AbilitiesText type={pokemon.types[0].type.name}>Abilities</AbilitiesText>
                         <AbilitiesList>
-                            {pokemon.abilities.map((abilitie) => (
+                            {pokemon.abilities.map((abilitie: Abilities) => (
                                 <li key={abilitie.ability.name}>{abilitie.ability.name}</li>
                             ))}
                         </AbilitiesList>

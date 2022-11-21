@@ -1,22 +1,23 @@
 
 import React from "react";
-import { PokemonDetail, PokemonImage, RightSide, PokemonCard, LeftSide, PokemonId, PokemonName, PokemonContentType, PokemonType, PokemonTypeText } from "./Card.styles";
+import { Monster, PokemonType } from "../interfaces/PokemonDefinition";
+import { PokemonDetail, PokemonImage, RightSide, PokemonCard, LeftSide, PokemonId, PokemonName, PokemonContentType, PokemonTypeContainer, PokemonTypeText } from "./Card.styles";
 
 
 
-const Card = ({ pokemon }: any) => {
+const Card = ({ pokemon }: Monster) => {
     return (
         <PokemonCard href={`/pokedex/${pokemon.id}`} type={pokemon.types[0].type.name}>
             <LeftSide>
                 <PokemonId>#{pokemon.id}</PokemonId>
                 <PokemonName>{pokemon.name}</PokemonName>
                 <PokemonContentType>
-                    {pokemon.types.map((pokemonType: any) => (
-                        <PokemonType key={pokemonType.type.name} type={pokemonType.type.name}>
+                    {pokemon.types.map((pokemonType: PokemonType) => (
+                        <PokemonTypeContainer key={pokemonType.type.name} type={pokemonType.type.name}>
                             <PokemonTypeText>
                                 {pokemonType.type.name}
                             </PokemonTypeText>
-                        </PokemonType>
+                        </PokemonTypeContainer>
                     ))}
                 </PokemonContentType>
             </LeftSide>

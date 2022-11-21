@@ -1,21 +1,11 @@
 import styled, { css } from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-
-export type PokemonType = {
-    type: string
-
-}
-
-export type Pokemon = {
-    name: string,
-    url: string,
-    id: number,
-    types: PokemonType[]             //Pois pode ter mais de 1 tipo, array
-}
+import { PokemonType } from "../interfaces/PokemonDefinition";
 
 
-export const PokemonCard = styled(Link) <PokemonType> `
+
+export const PokemonCard = styled(Link) <PokemonType>`
     /* pegando dinamicamente os tipos de bg card*/
     ${({ theme, type }) => css`
         background: ${theme.colors.backgroundCard[type]};
@@ -61,7 +51,7 @@ export const PokemonContentType = styled.div`
     flex-direction: row;
 `;
 
-export const PokemonType = styled.div<PokemonType>`
+export const PokemonTypeContainer = styled.div<PokemonType>`
     ${({ theme, type }) => css`
         display: flex;
         padding: 5px;
