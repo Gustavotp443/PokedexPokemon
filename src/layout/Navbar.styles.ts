@@ -41,7 +41,7 @@ font-weight: bold;
 z-index: 2;
 @media screen and (max-width:768px){
         position: absolute;
-        top: ${({ click }) => (click ? "0" : "-100%")};
+        top: ${({ click }) => (click ? "0" : "-200%")};
         width: 100%;
         background-color: black;
         padding: 20px;
@@ -92,8 +92,8 @@ export const PokedexLink = styled.div<CLick>`
         display: flex;
         width: 100%;
         justify-content: center;
-        transform: translateY(62vh) translateX(-2%); 
+        transform: translateY(70vh) translateX(-2%); 
         z-index: 3;
-        top: ${({ click }) => (click ? "0" : "-100%")};
+        top: ${({ click }) => (click ? "0" : "-200%")};
     }
 `;

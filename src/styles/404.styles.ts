@@ -12,6 +12,7 @@ export const Container404 = styled(Container)`
     h2{
         font-size: 2.3em;
         text-align: center;
+        margin: 0 4%;
     }
     img{
         margin-top: 80px;

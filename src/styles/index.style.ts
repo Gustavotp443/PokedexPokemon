@@ -5,6 +5,7 @@ export const HomeContainer = styled(Container)`
     width:100%;
     margin-top: 60px;
 `;
+
 export const Header = styled.div`
     display: flex;
     flex-direction: column;
@@ -45,23 +46,16 @@ export const Welcome = styled.div`
 export const GifContainer = styled.div`
     width:100%;
     height:0;
+    text-align: center;
  
 
 
     img{
+        position: relative;
         margin-top: 40px;
         width: 300px;
-        animation: move 5s linear infinite;
-
-        @keyframes move {
-            0%{
-                transform: translateX(-150%);
-            }
-
-            100%{
-                transform: translateX(500%);
-            }
-        }
+        
+        
     }
 `;
 

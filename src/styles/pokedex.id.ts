@@ -1,13 +1,14 @@
 import styled, { css } from "styled-components";
-import { Container } from "../../styles/global";
+import { Container } from "./global";
 import Image from "next/image";
 import { Line } from "rc-progress";
-import { PokemonType } from "../../components/Card.styles";
+import { PokemonType } from "../components/Card.styles";
 
 
 
 export const PokemonContent = styled(Container)`
-
+    width: 100%;
+    margin: 0 auto;
 
 `;
 export const ArrowToComeback = styled.div<PokemonType>`
@@ -72,11 +73,11 @@ justify-content: center;
 
 export const PokemonImage = styled(Image)`
     z-index: 1;
-    animation: fadeIn 1.5s linear;
+    animation: fadeIn 2s linear;
     @keyframes fadeIn {
         0%{
             opacity: 0;
-            transform: translateX(50%);
+            transform: translateX(-50px);
         }
         100%{
             opacity: 1;
@@ -95,14 +96,13 @@ export const PokemonId = styled.p`
     color: black;
     font-size: 1.3em;
     display: flex;
-}
+
 `;
 
 export const PokemonName = styled.h1`
     font-size: 2.6em;
     text-transform: capitalize;
     font-weight: 700;
-}
 `;
 export const PokemonNameId = styled.div`
     @media screen and (max-width:580px){
@@ -112,6 +112,7 @@ export const PokemonNameId = styled.div`
     align-items: center;
     position: absolute;
     top: 130px;
+}
 `;
 
 
@@ -208,6 +209,7 @@ export const ProgressBar = styled(Line)`
         margin-top: -25px;
     }
 `;
+
 export const AbilitiesWraper = styled.ul`
     width: 20%;
 

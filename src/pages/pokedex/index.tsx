@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import api from "../../services/api";
 import Card from "../../components/Card";
-import { CardList, PokedexContainer } from "./index.styles";
+import { CardList, PokedexContainer } from "../../styles/index.styles";
 import ButtonToTop from "../../components/ButtonToTop";
 import Pagination from "../../components/Pagination";
 import { Pokemon, PokemonType } from "../../components/Card.styles";

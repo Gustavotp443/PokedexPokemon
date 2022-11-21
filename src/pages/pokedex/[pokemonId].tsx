@@ -1,8 +1,9 @@
 import React from "react";
 import api from "../../services/api";
-import { BotWrapper, Attributes, PokemonId, PokemonTypeText, PokemonTypes, PokemonContentType, PokemonContent, PokemonTop, PokemonName, LeftSide, RightSide, PokemonBot, SidesContainer, CircleImage, BaseStatus, BaseStatusText, AttributesValue, AttributesWrapper, ProgressBar, PokemonImage, AbilitiesList, AbilitiesText, AbilitiesWraper, PokemonNameId, ArrowToComeback } from "./pokedex.id";
+import { BotWrapper, Attributes, PokemonId, PokemonTypeText, PokemonTypes, PokemonContentType, PokemonContent, PokemonTop, PokemonName, LeftSide, RightSide, PokemonBot, SidesContainer, CircleImage, BaseStatus, BaseStatusText, AttributesValue, AttributesWrapper, ProgressBar, PokemonImage, AbilitiesList, AbilitiesText, AbilitiesWraper, PokemonNameId, ArrowToComeback } from "../../styles/pokedex.id";
 import { AiOutlineLeft } from "react-icons/ai";
 import Link from "next/link";
+
 export const getStaticPaths = async () => {
     const response = await api.get("/pokemon?limit=905");
     const data = await response.data;
