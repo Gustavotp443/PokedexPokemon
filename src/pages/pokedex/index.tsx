@@ -4,12 +4,9 @@ import Card from "../../components/Card";
 import { CardList, PokedexContainer } from "../../styles/index.styles";
 import ButtonToTop from "../../components/ButtonToTop";
 import Pagination from "../../components/Pagination";
-import { Pokemon, PokemonType } from "../../components/Card.styles";
+import { Pokemon, Request } from "../../interfaces/PokemonDefinition";
 
-type Request = {
-    id: number,
-    types: PokemonType
-}
+
 
 
 
@@ -53,14 +50,12 @@ const index = () => {
         };
     }
 
-
-    console.log(pokemons);
     return (
         <PokedexContainer>
             <ButtonToTop />
             <CardList>
                 {pokemons.length > 0 &&
-                    pokemons.map((pokemon: typeof pokemons) => (
+                    pokemons.map((pokemon: Pokemon) => (
                         <li key={pokemon.id}><Card key={pokemon.id.toString()} pokemon={pokemon} /></li>
                     ))}
             </CardList>
